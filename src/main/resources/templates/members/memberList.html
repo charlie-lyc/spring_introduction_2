@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Member List</title>
+</head>
+<body>
+    <h2>Member List</h2>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>이름</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="member : ${members}">
+                    <!-- getter, setter 접근 방식이 아니라 property 접근 방식임 -->
+                    <td th:text="${member.id}"></td>
+                    <td th:text="${member.name}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <button></buttonㅣ><a href="/">홈</a></button>
+    </div>
+</body>
+</html>
