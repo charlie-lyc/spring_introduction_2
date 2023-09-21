@@ -1,8 +1,15 @@
 package memberservice.member.domain;
 
+import javax.persistence.*;
+
+@Entity // <- JPA
 public class Member {
 
+    @Id // <- JPA
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // <- JPA
     private Long id;
+
+    @Column(name = "name") // <- JPA
     private String name;
 
     public Long getId() {

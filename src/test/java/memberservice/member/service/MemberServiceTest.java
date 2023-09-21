@@ -24,7 +24,7 @@ class MemberServiceTest {
      * 따라서 MemberService 클래스에서 기존의 repository 를 외부에서 제공하는 객체로 새롭게 정의할 필요가 있음.
      */
     // MemoryMemberRepository repository = new MemoryMemberRepository();
-    MemoryMemberRepository repository;
+    MemoryMemberRepository memberRepository;
 
     /**
      * 위와 같이 수정되면 각 테스트 전에 실행해야할 동작이 아래와 같이 추가됨
@@ -32,13 +32,13 @@ class MemberServiceTest {
      */
     @BeforeEach
     public void beforeEach() {
-        repository = new MemoryMemberRepository();
-        memberService = new MemberService(repository);
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
     }
 
     @AfterEach
     public void afterEach() {
-        repository.clearStore();
+        memberRepository.clearStore();
     }
 
     /**
@@ -47,7 +47,7 @@ class MemberServiceTest {
      */
 
     @Test
-    public void 회원가입() {
+    public void 회원가입() throws Exception {
         /* (1) GIVEN */
         Member member = new Member();
         member.setName("spring");
@@ -64,7 +64,7 @@ class MemberServiceTest {
 
     /* 정상적인 회원 가입의 테스트보다 예외 처리의 테스트가 더 중요 */
     @Test
-    public void 중복이름_회원가입_예외() {
+    public void 중복이름_회원가입_예외() throws Exception {
         /* (1) GIVEN */
         Member member1 = new Member();
         member1.setName("spring");
@@ -88,7 +88,7 @@ class MemberServiceTest {
     }
 
     @Test
-    public void 전체회원조회() {
+    public void 전체회원조회() throws Exception {
         /* (1) GIVEN */
         Member member1 = new Member();
         member1.setName("spring1");
@@ -105,7 +105,7 @@ class MemberServiceTest {
     }
 
     @Test
-    void 회원조회() {
+    public void 회원조회() throws Exception {
         /* (1) GIVEN */
         Member member1 = new Member();
         member1.setName("spring1");
